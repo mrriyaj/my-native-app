@@ -133,6 +133,13 @@ class TaskController extends Controller
 
         $task->update($data);
 
+        Alert::new()
+            ->show('Task updated successfully!');
+
+        Notification::title('Hello from NativePHP')
+            ->message('Task updated successfully.')
+            ->show();
+
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
 
@@ -144,6 +151,13 @@ class TaskController extends Controller
         }
 
         $task->delete();
+
+        Alert::new()
+            ->show('Task deleted successfully!');
+
+        Notification::title('Hello from NativePHP')
+            ->message('Task deleted successfully.')
+            ->show();
 
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
     }
@@ -420,6 +434,13 @@ class TaskController extends Controller
             $updatedCount === 1 ? '' : 's'
         );
 
+        Alert::new()
+            ->show($message);
+
+        Notification::title('Hello from NativePHP')
+            ->message($message)
+            ->show();
+
         return redirect()->back()->with('success', $message);
     }
 
@@ -462,6 +483,13 @@ class TaskController extends Controller
 
         // Using file_put_contents() and json_encode()
         file_put_contents($filePath, json_encode($report, JSON_PRETTY_PRINT));
+
+        Alert::new()
+            ->show('Report generated successfully!');
+
+        Notification::title('Hello from NativePHP')
+            ->message('Report generated successfully.')
+            ->show();
 
         return response()->download($filePath)->deleteFileAfterSend(true);
     }

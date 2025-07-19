@@ -15,6 +15,21 @@ class NativeAppServiceProvider implements ProvidesPhpIni
      */
     public function boot(): void
     {
+        // Register the main window and menu bar
+        Menu::create(
+            Menu::label('Task Manager'),
+            Menu::app(), // Only on macOS
+            Menu::make(
+                Menu::link(route('tasks.dashboard'), 'Dashboard'),
+                Menu::link(route('tasks.index'), 'View All Tasks'),
+                Menu::link(route('tasks.create'), 'Create New Task'),
+            )->label('Menu'),
+            Menu::edit(),
+            Menu::view(),
+            Menu::link('https://github.com/mrriyaj/my-native-app', 'Project GitHub')
+            ->openInBrowser(),
+        );
+
         // Create the main window
         Window::open()
             ->title('Task Manager')

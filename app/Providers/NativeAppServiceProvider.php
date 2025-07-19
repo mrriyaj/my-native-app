@@ -17,6 +17,7 @@ class NativeAppServiceProvider implements ProvidesPhpIni
     {
         // Create the main window
         Window::open()
+            ->title('Task Manager')
             ->width(800)
             ->height(800);
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Native\Laravel\Dialog;
+use Native\Laravel\Facades\Alert;
+use Native\Laravel\Facades\Notification;
 
 class TaskController extends Controller
 {
@@ -81,6 +84,13 @@ class TaskController extends Controller
         }
 
         Task::create($data);
+
+        Alert::new()
+            ->show('Task created successfully!');
+
+        Notification::title('Hello from NativePHP')
+            ->message('This is a detail message coming from your Laravel app.')
+            ->show();
 
         return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }

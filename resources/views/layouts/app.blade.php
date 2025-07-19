@@ -34,6 +34,10 @@
                             class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
                             All Tasks
                         </a>
+                        <a href="{{ route('tasks.dashboard') }}"
+                            class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                            PHP Functions Demo
+                        </a>
                         <a href="{{ route('tasks.create') }}"
                             class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
                             New Task
